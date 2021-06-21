@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <script>
+        var isMobile = {
+            Android: function () {
+                return navigator.userAgent.match(/Android/i);
+            },
+            iOS: function () {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            HuwWei: function () {
+                return navigator.userAgent.match(/huawei/i);
+            }
+        };
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        #loading {
+            display: none;
+            position: fixed;
+            z-index: 400;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #595758;
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MQ4VP6" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MQ4VP6');</script>
+    <!-- End Google Tag Manager -->
+    <div id="loading">
+        <img style="width:100%"
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftools-loading.qiniudn.com%2Floading131.gif&refer=http%3A%2F%2Ftools-loading.qiniudn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1626586731&t=44362e5d8350b3d4678c31a6ba17353e"
+            alt="">
+    </div>
+    <script>
+        // if (isMobile.iOS()) window.location.assign("https://itunes.apple.com/hk/app/bea-dong-ya-yin-xing/id381215704?l=zh&mt=8");
+        // else if (isMobile.Android()) window.location.assign("https://play.google.com/store/apps/details?id=com.mtel.androidbea&feature=search_result&hl=TC");
+        // else window.location.assign("http://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
+
+        if (isMobile.iOS()) {
+            window.location.assign("https://itunes.apple.com/hk/app/bea-dong-ya-yin-xing/id381215704?l=zh&mt=8");
+        } else if (isMobile.Android()) {
+            isConnectGoogle();
+        } else {
+            // window.location.assign("http://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
+        }
+
+        function isConnectGoogle() {
+            let googleSrc = document.createElement('script');
+            googleSrc.src = 'https://www.google.com/';
+            document.getElementsByTagName('head')[0].appendChild(googleSrc);
+            //请求Google时添加loading
+            document.getElementById('loading').style.display = 'block';
+            googleSrc.onload = function () {
+                console.log('connect success')
+                document.getElementById('loading').style.display = 'none';
+                isHuaWei()
+            };
+            googleSrc.onerror = function () {
+                console.log('connect fail')
+                document.getElementById('loading').style.display = 'none';
+                // Go to website's APK
+                window.location.assign("https://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
+            }
+        }
+
+        function isHuaWei() {
+            if (isMobile.HuwWei()) {
+                console.log('huawei')
+                window.location.assign("https://appgallery.huawei.com/#/app/C101935875");
+                // Go to App Gallery 
+            } else {
+                console.log('not huawei')
+                window.location.assign("https://play.google.com/store/apps/details?id=com.mtel.androidbea&feature=search_result&hl=TC");
+                // Go to Google Play 
+            }
+        }
+    </script>
+    <!--Page Loading, please wait.<br/>網頁載入中，請稍候。<br/>网页载入中，请稍候。-->
+</body>
+
+</html>
