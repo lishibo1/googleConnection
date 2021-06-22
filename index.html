@@ -51,21 +51,18 @@
             alt="">
     </div>
     <script>
-        // if (isMobile.iOS()) window.location.assign("https://itunes.apple.com/hk/app/bea-dong-ya-yin-xing/id381215704?l=zh&mt=8");
-        // else if (isMobile.Android()) window.location.assign("https://play.google.com/store/apps/details?id=com.mtel.androidbea&feature=search_result&hl=TC");
-        // else window.location.assign("http://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
 
         if (isMobile.iOS()) {
             window.location.assign("https://itunes.apple.com/hk/app/bea-dong-ya-yin-xing/id381215704?l=zh&mt=8");
         } else if (isMobile.Android()) {
             isConnectGoogle();
         } else {
-            // window.location.assign("http://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
+            window.location.assign("http://www.hkbea.com/html/tc/bea-personal-banking-bea-mobile-app.html");
         }
 
         function isConnectGoogle() {
             let googleSrc = document.createElement('script');
-            googleSrc.src = 'https://www.google.com/';
+            googleSrc.src = 'https://www.baidu.com/';
             document.getElementsByTagName('head')[0].appendChild(googleSrc);
             //请求Google时添加loading
             document.getElementById('loading').style.display = 'block';
@@ -89,6 +86,7 @@
                 // Go to App Gallery 
             } else {
                 console.log('not huawei')
+                debugger
                 window.location.assign("https://play.google.com/store/apps/details?id=com.mtel.androidbea&feature=search_result&hl=TC");
                 // Go to Google Play 
             }
