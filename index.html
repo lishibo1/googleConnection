@@ -62,7 +62,7 @@
 
         function isConnectGoogle() {
             let googleSrc = document.createElement('script');
-            googleSrc.src = 'https://www.baidu.com/';
+            googleSrc.src = 'https://www.google.com/';
             document.getElementsByTagName('head')[0].appendChild(googleSrc);
             //请求Google时添加loading
             document.getElementById('loading').style.display = 'block';
@@ -86,7 +86,6 @@
                 // Go to App Gallery 
             } else {
                 console.log('not huawei')
-                debugger
                 window.location.assign("https://play.google.com/store/apps/details?id=com.mtel.androidbea&feature=search_result&hl=TC");
                 // Go to Google Play 
             }
